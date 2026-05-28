@@ -11,7 +11,7 @@
             </svg>
           </div>
           <div class="logo-text" v-if="!sidebarCollapsed">
-            <div class="logo-title">Kimi ERP</div>
+            <div class="logo-title">ERP</div>
             <div class="logo-subtitle">Учет посуды</div>
           </div>
         </div>

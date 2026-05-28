@@ -21,7 +21,7 @@
             </div>
             <div class="brand-pulse"></div>
           </div>
-          <div class="brand-name">Kimi ERP</div>
+          <div class="brand-name">ERP</div>
           <div class="brand-desc">ERP-система для управления производством и продажами эмалированной посуды</div>
         </div>
         <div class="features">
