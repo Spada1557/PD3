@@ -90,6 +90,15 @@ def get_warehouses(db: Session):
     return db.query(models.Warehouse).order_by(models.Warehouse.name).all()
 
 
+def get_default_warehouse(db: Session) -> models.Warehouse:
+    wh = db.query(models.Warehouse).filter(models.Warehouse.is_default == 1).first()
+    if not wh:
+        wh = db.query(models.Warehouse).order_by(models.Warehouse.id).first()
+    if not wh:
+        raise ValueError("В системе не создано ни одного склада")
+    return wh
+
+
 def create_warehouse(db: Session, obj: schemas.WarehouseCreate) -> models.Warehouse:
     db_obj = models.Warehouse(name=obj.name, is_default=obj.is_default)
     db.add(db_obj)

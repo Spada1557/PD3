@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List, Optional
-from pydantic import BaseModel, Field, EmailStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, EmailStr, field_validator
 import re
 
 
@@ -52,8 +52,7 @@ class UserOut(UserBase):
     id: int
     created_at: Optional[datetime] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class LoginRequest(BaseModel):
@@ -75,8 +74,7 @@ class CategoryCreate(CategoryBase):
 class CategoryOut(CategoryBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class UnitBase(BaseModel):
@@ -90,8 +88,7 @@ class UnitCreate(UnitBase):
 class UnitOut(UnitBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class WarehouseBase(BaseModel):
@@ -106,8 +103,7 @@ class WarehouseCreate(WarehouseBase):
 class WarehouseOut(WarehouseBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class SupplierBase(BaseModel):
@@ -130,8 +126,7 @@ class SupplierUpdate(SupplierBase):
 class SupplierOut(SupplierBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ClientBase(BaseModel):
@@ -153,8 +148,7 @@ class ClientUpdate(ClientBase):
 class ClientOut(ClientBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # ============================
@@ -201,8 +195,7 @@ class ProductOut(ProductBase):
     category: Optional[CategoryOut] = None
     unit: Optional[UnitOut] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # ============================
@@ -222,8 +215,7 @@ class StockOut(StockBase):
     warehouse: Optional[WarehouseOut] = None
     available: float = 0.0
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class StockMovementBase(BaseModel):
@@ -244,8 +236,7 @@ class StockMovementOut(StockMovementBase):
     warehouse: Optional[WarehouseOut] = None
     user: Optional[UserOut] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class InventoryItem(BaseModel):
@@ -272,8 +263,7 @@ class PurchaseItemOut(PurchaseItemBase):
     amount: float
     product: Optional[ProductOut] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class PurchaseBase(BaseModel):
@@ -304,8 +294,7 @@ class PurchaseOut(PurchaseBase):
     items: List[PurchaseItemOut] = []
     created_by_user: Optional[UserOut] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # ============================
@@ -327,8 +316,7 @@ class SaleItemOut(SaleItemBase):
     cost: float
     product: Optional[ProductOut] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class SaleBase(BaseModel):
@@ -360,8 +348,7 @@ class SaleOut(SaleBase):
     items: List[SaleItemOut] = []
     created_by_user: Optional[UserOut] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # ============================
@@ -379,8 +366,7 @@ class SettingCreate(SettingBase):
 class SettingOut(SettingBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class CompanySettings(BaseModel):

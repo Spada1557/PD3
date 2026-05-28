@@ -58,8 +58,12 @@ async def get_current_user(
     payload = decode_token(token)
     if payload is None:
         raise credentials_exception
-    user_id: Optional[int] = payload.get("sub")
-    if user_id is None:
+    raw_sub = payload.get("sub")
+    if raw_sub is None:
+        raise credentials_exception
+    try:
+        user_id: int = int(raw_sub)
+    except (TypeError, ValueError):
         raise credentials_exception
     user = db.query(models.User).filter(models.User.id == user_id).first()
     if user is None:
